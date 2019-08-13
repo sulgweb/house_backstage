@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^3.21.4",
     "customize-cra": "^0.5.0",
+    "echarts": "^4.2.1",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "react": "^16.8.6",

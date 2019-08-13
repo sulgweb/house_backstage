@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 import Router from "./router/index";
 import LeftNav from "./view/Common/LeftNav"
-import "./common/css/index.css";
+import "./common/css/index.scss";
 import { Layout } from "antd";
 
 export default class Root extends React.Component {
@@ -12,8 +12,11 @@ export default class Root extends React.Component {
     return (
       <BrowserRouter>
         <LeftNav></LeftNav>
-        <Layout style={{ marginLeft: 200 }}>
-          <Router />
+        <Layout style={{ marginLeft: '200px' }}>
+          <header style={{background: "#001529",height:"50px"}}>title</header>
+          <main style={{padding:"40px 30px"}}>
+            <Router />
+          </main>
         </Layout>
       </BrowserRouter>
     );
