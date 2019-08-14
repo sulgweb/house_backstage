@@ -13,7 +13,7 @@ export default class Root extends React.Component {
       <BrowserRouter>
         <LeftNav></LeftNav>
         <Layout style={{ marginLeft: '200px' }}>
-          <header style={{background: "#001529",height:"50px"}}>title</header>
+          <header style={{background: "#fff",height:"50px"}}>title</header>
           <main style={{padding:"40px 30px"}}>
             <Router />
           </main>

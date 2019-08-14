@@ -1,11 +1,14 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
-import Index from '../view/Index/Index'
+import Home from '../view/Home/index';
+import UserManage from '../view/UserManage/index'
 
 const BasicRoute = () => (
     <Switch>
         {/* 主页 */}
-        <Route exact path="/" component={Index}/>
+        <Route exact path="/" component={Home}/>
+        {/* 用户管理 */}
+        <Route exact path="/UserManage" component={UserManage}/>
     </Switch>
 );
 export default BasicRoute;
