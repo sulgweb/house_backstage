@@ -76,6 +76,11 @@ export default class Root extends React.Component {
                 <Icon type="team" />
                 <span className="nav-text">权限管理</span>
               </Menu.Item>
+              <Menu.Item key="apiManage">
+                <Link to="apiManage" />
+                  <Icon type="team" />
+                  <span className="nav-text">Api管理</span>
+              </Menu.Item>
               <Menu.Item key="8">
                 <Link to="Log" />
                 <Icon type="team" />
