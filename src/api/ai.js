@@ -8,14 +8,35 @@ class Ai{
         let result = await axios.get(`${baseUrl}/ai/appid`).then(res=>{
             return res.data
         });
-        return result;
+        return result.data;
     }
     //添加appid
-    async add(data){
+    async addAppid(data){
         let result = await axios.post(`${baseUrl}/ai/appid`,data).then(res=>{
             return res.data
         });
-        return result;
+        return result.data;
+    }
+    //设置appid的状态
+    async deleteAppid(data){
+        let result = await axios.delete(`${baseUrl}/ai/appid/${data}`).then(res => {
+            return res.data
+        })
+        return result
+    }
+    //设置appid的状态
+    async setStatus(data){
+        let result = await axios.put(`${baseUrl}/ai/appid/reset`,data).then(res => {
+            return res.data
+        })
+        return result
+    }
+    //获取appid统计列表
+    async getCountList(){
+        let result = await axios.get(`${baseUrl}/ai/appid/count`).then(res=>{
+            return res.data;
+        })
+        return result.data
     }
 }
 const ai=new Ai()

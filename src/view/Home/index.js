@@ -1,12 +1,16 @@
-import { Row, Col, Card, Icon, Statistic} from 'antd';
+import { Row, Col } from 'antd';
 import React from 'react'
 import echarts from 'echarts';
+import IconCard from "../component/iconCard"
 
 
 export default class Home extends React.Component{
-  state = {
-    collapsed: false,
-  };
+  constructor(props){
+    super(props)
+    this.state = {
+      collapsed: false,
+    }
+  }
 
   toggle = () => {
     this.setState({
@@ -50,74 +54,22 @@ export default class Home extends React.Component{
             <div className="main-content">
               <Col span={6}>
                 <div className="bg-white">
-                  <Card >
-                    <Row>
-                      <Col span={8}>
-                        <Icon type="user-add" style={{ color: '#3e9bf7', fontSize:"64px" }} />
-                      </Col>
-                      <Col span={16}>
-                        <div>新注册的会员</div>
-                        <Statistic
-                          value={1388}
-                          valueStyle={{ color: '#3e9bf7', fontSize:"36px" }}
-                        />
-                      </Col>
-                    </Row>
-                  </Card>
+                  <IconCard name="当前用户数" number="16515" icon="user-add"></IconCard>
                 </div>
               </Col>
               <Col span={6}>
                 <div className="bg-white">
-                  <Card >
-                    <Row>
-                      <Col span={8}>
-                        <Icon type="user-add" style={{ color: '#3e9bf7', fontSize:"64px" }} />
-                      </Col>
-                      <Col span={16}>
-                        <div>新注册的会员</div>
-                        <Statistic
-                          value={1388}
-                          valueStyle={{ color: '#3e9bf7', fontSize:"36px" }}
-                        />
-                      </Col>
-                    </Row>
-                  </Card>
+                  <IconCard name="当前用户数" number="16515" icon="user-add"></IconCard>
                 </div>
               </Col>
               <Col span={6}>
                 <div className="bg-white">
-                  <Card >
-                    <Row>
-                      <Col span={8}>
-                        <Icon type="user-add" style={{ color: '#3e9bf7', fontSize:"64px" }} />
-                      </Col>
-                      <Col span={16}>
-                        <div>新注册的会员</div>
-                        <Statistic
-                          value={1388}
-                          valueStyle={{ color: '#3e9bf7', fontSize:"36px" }}
-                        />
-                      </Col>
-                    </Row>
-                  </Card>
+                  <IconCard name="当前用户数" number="16515" icon="user-add"></IconCard>
                 </div>
               </Col>
               <Col span={6}>
                 <div className="bg-white">
-                  <Card >
-                    <Row>
-                      <Col span={8}>
-                        <Icon type="user-add" style={{ color: '#3e9bf7', fontSize:"64px" }} />
-                      </Col>
-                      <Col span={16}>
-                        <div>新注册的会员</div>
-                        <Statistic
-                          value={1388}
-                          valueStyle={{ color: '#3e9bf7', fontSize:"36px" }}
-                        />
-                      </Col>
-                    </Row>
-                  </Card>
+                  <IconCard name="当前用户数" number="16515" icon="stock"></IconCard>
                 </div>
               </Col>
             </div>

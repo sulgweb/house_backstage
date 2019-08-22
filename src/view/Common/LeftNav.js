@@ -11,12 +11,6 @@ export default class Root extends React.Component {
             currentRouter:""
         }
     }
-    componentDidMount(){
-        console.log(this.props)
-    }
-    async componentWillMount(){
-        setTimeout(()=>{console.log(this.props)},1000)
-    }
   render() {
     return (
         <Layout>
