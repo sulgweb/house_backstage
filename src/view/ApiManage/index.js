@@ -87,7 +87,10 @@ class Index extends React.Component {
       data: aiList,
       dateList: dateList,
       countList: countList,
-      apiTypeCount: apiTypeCount
+      apiTypeCount: apiTypeCount,
+      translateCount: apiTypeCount[0],
+      imageCount: apiTypeCount[1],
+      audioCount: apiTypeCount[2]
     });
     console.log(this.state)
     console.log(this.state.apiTypeCount["0"])
@@ -256,8 +259,22 @@ class Index extends React.Component {
                   >
                     <div style={{ maxWidth: "480px" }} >
                       <IconCard
-                        name="当前QPS（翻译、图片识别、语音识别）"
-                        number={this.state.apiTypeCount}
+                        name="翻译QPS"
+                        number={this.state.translateCount}
+                        icon="stock"
+                      />
+                    </div>
+                    <div style={{ maxWidth: "480px" }} >
+                      <IconCard
+                        name="图片识别QPS"
+                        number={this.state.imageCount}
+                        icon="stock"
+                      />
+                    </div>
+                    <div style={{ maxWidth: "480px" }} >
+                      <IconCard
+                        name="语音识别QPS"
+                        number={this.state.audioCount}
                         icon="stock"
                       />
                     </div>
