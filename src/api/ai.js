@@ -1,6 +1,6 @@
 import axios from 'axios';
-//let baseUrl = "http://egg.weblyff.cn:7001"
-let baseUrl = "http://localhost:7001"
+let baseUrl = "http://egg.weblyff.cn:7001"
+//let baseUrl = "http://localhost:7001"
 //ai类，与百度ai相关的请求
 class Ai{
     //获取appid列表
