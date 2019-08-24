@@ -1,4 +1,4 @@
-import { Row, Col, Table, Button, Modal, Form, Input, Icon, Select, message } from "antd";
+import { Row, Col, Table, Button, Modal, Form, Input, Icon, Select, message, Pagination } from "antd";
 import React from "react";
 import echarts from "echarts";
 import { ai } from "../../api/ai";
@@ -63,16 +63,16 @@ class Index extends React.Component {
   }
 
   //数据初始化
-  async _initData(){
+  async _initData(page=1,size=3){
     //获取ai列表
-    let aiList = await ai.list();
+    let aiListRes = await ai.list({page,size});
+    let aiList = aiListRes.list;
     let apiTypeCount=[ 0, 0, 0 ]
     for(let i = 0;i < aiList.length;i++){
       apiTypeCount[aiList[i].type]++
     }
     //获取ai请求统计列表
     let aiCountList = await ai.getCountList();
-    console.log(aiList, aiCountList);
     for (let i = 0; i < aiList.length; i++) {
       aiList[i].key = i;
     }
@@ -84,16 +84,13 @@ class Index extends React.Component {
       countList.push(aiCountList[i].count);
     }
     this.setState({
+      aiListRes: aiListRes,
       data: aiList,
       dateList: dateList,
       countList: countList,
       apiTypeCount: apiTypeCount,
-      translateCount: apiTypeCount[0],
-      imageCount: apiTypeCount[1],
-      audioCount: apiTypeCount[2]
     });
     console.log(this.state)
-    console.log(this.state.apiTypeCount["0"])
   }
   //初始化图表
   _initChart(){
@@ -197,6 +194,10 @@ class Index extends React.Component {
       }
     }
   }
+  //切换分页
+  changPage = page => {
+    this._initData(page)
+  }
   //显示新增模态框
   showModal = () => {
     this.setState({
@@ -213,11 +214,31 @@ class Index extends React.Component {
   
   
   async componentDidMount() {
-    await this._initData()
+    await this._initData(1,3)
     await this._initChart()
   }
+  //页面渲染
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { aiListRes, apiTypeCount } = this.state;
+
+    let apiPagination = aiListRes?
+        <Pagination 
+          showQuickJumper 
+          defaultCurrent={this.state.aiListRes.page} 
+          defaultPageSize={this.state.aiListRes.size}	 
+          total={this.state.aiListRes.count} 
+          onChange={this.changPage}
+        />:"";
+    let iconTypeCount = apiTypeCount?apiTypeCount.map((item, index)=> (
+      <div style={{ maxWidth: "480px" }} key={index}>
+        <IconCard
+          name={`${this.handleApiType(index)}QPS`}
+          number={item}
+          icon="stock"
+        />
+      </div>
+    )):"";
     return (
       <div id="UserManage">
         <header className="myheader">
@@ -233,7 +254,7 @@ class Index extends React.Component {
                     style={{ marginRight: "10px" }}
                     onClick={() => this.showModal()}
                   />
-                  用户管理
+                  API管理
                 </div>
               </div>
             </Col>
@@ -257,27 +278,7 @@ class Index extends React.Component {
                     className="bg-white"
                     style={{ width: "100%", height: 400 }}
                   >
-                    <div style={{ maxWidth: "480px" }} >
-                      <IconCard
-                        name="翻译QPS"
-                        number={this.state.translateCount}
-                        icon="stock"
-                      />
-                    </div>
-                    <div style={{ maxWidth: "480px" }} >
-                      <IconCard
-                        name="图片识别QPS"
-                        number={this.state.imageCount}
-                        icon="stock"
-                      />
-                    </div>
-                    <div style={{ maxWidth: "480px" }} >
-                      <IconCard
-                        name="语音识别QPS"
-                        number={this.state.audioCount}
-                        icon="stock"
-                      />
-                    </div>
+                    {iconTypeCount}
                   </div>
                 </div>
               </Col>
@@ -288,7 +289,11 @@ class Index extends React.Component {
               <Table
                 columns={this.state.columns}
                 dataSource={this.state.data}
+                pagination={false}
               />
+              <div style={{padding:"20px 0"}} align="right">
+                {apiPagination}
+              </div>
             </div>
           </section>
         </main>

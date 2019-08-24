@@ -1,11 +1,16 @@
 import axios from 'axios';
-let baseUrl = "http://egg.weblyff.cn:7001"
-//let baseUrl = "http://localhost:7001"
+//let baseUrl = "http://egg.weblyff.cn:7001"
+let baseUrl = "http://localhost:7001"
 //ai类，与百度ai相关的请求
 class Ai{
     //获取appid列表
-    async list(){
-        let result = await axios.get(`${baseUrl}/ai/appid`).then(res=>{
+    async list(data){
+        let result = await axios.get(`${baseUrl}/ai/appid`,{
+            params:{
+                size:data.size,
+                page:data.page,
+            }
+        }).then(res=>{
             return res.data
         });
         return result.data;
@@ -31,7 +36,7 @@ class Ai{
         })
         return result
     }
-    //获取appid统计列表
+    //获取appid请求统计列表
     async getCountList(){
         let result = await axios.get(`${baseUrl}/ai/appid/count`).then(res=>{
             return res.data;
