@@ -42,9 +42,9 @@ export default class Root extends React.Component {
                 </Link>
               </Menu.Item>
               <Menu.Item key="3">
-                <Link to="CollectManage">
+                <Link to="HouseManage">
                   <Icon type="upload" />
-                  <span className="nav-text">收藏管理</span>
+                  <span className="nav-text">房源管理</span>
                 </Link>
               </Menu.Item>
               <Menu.Item key="4">
@@ -54,9 +54,9 @@ export default class Root extends React.Component {
                 </Link>
               </Menu.Item>
               <Menu.Item key="5">
-                <Link to="PermissionManage">
-                  <Icon type="cloud-o" />
-                  <span className="nav-text">公告管理</span>
+                <Link to="CollectManage">
+                  <Icon type="upload" />
+                  <span className="nav-text">收藏管理</span>
                 </Link>
               </Menu.Item>
               <Menu.Item key="6">
@@ -81,6 +81,12 @@ export default class Root extends React.Component {
                 <span className="nav-text">个人中心</span>
               </Menu.Item>
               <Menu.Item key="9">
+                <Link to="PermissionManage">
+                  <Icon type="cloud-o" />
+                  <span className="nav-text">公告管理</span>
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="10">
                 <Link to="Log" />
                 <Icon type="team" />
                 <span className="nav-text">系统日志</span>
