@@ -39,34 +39,15 @@ class Index extends React.Component {
       visible: false
     };
   }
-
   //数据初始化
   async _initData(page=1,size=3){
     //获取ai列表
     let aiListRes = await ai.list({page,size});
     let aiList = aiListRes.list;
-    let apiTypeCount=[ 0, 0, 0 ]
-    for(let i = 0;i < aiList.length;i++){
-      apiTypeCount[aiList[i].type]++
-    }
-    //获取ai请求统计列表
-    let aiCountList = await ai.getCountList();
-    for (let i = 0; i < aiList.length; i++) {
-      aiList[i].key = i;
-    }
-    //初始化图表数据
-    let dateList = [];
-    let countList = [];
-    for (let i = 0; i < aiCountList.length; i++) {
-      dateList.push(handleDate.fortmatMounth(aiCountList[i].date * 1000));
-      countList.push(aiCountList[i].count);
-    }
+    //设置state，只有在state里面的数据才会动态更新
     this.setState({
       aiListRes: aiListRes,
       data: aiList,
-      dateList: dateList,
-      countList: countList,
-      apiTypeCount: apiTypeCount,
     });
     console.log(this.state)
   }
@@ -99,19 +80,22 @@ class Index extends React.Component {
   }
   // async/await 用同步的方式写异步，es8的语法
   async componentDidMount() {
+    //api管理的数据初始化
     await this._initData(1,3)
-    //await this._initChart()
     let data = {
         page:1,//当前页
         num:10,//每页的数量
         key:""//模糊搜索关键词
     }
-    console.log("获取房源信息",await this.getHouseList(data))
+    //获取房子列表
+    let res = await this.getHouseList(data)
+    console.log("获取房源信息",res)
   }
   //页面渲染
   render() {
     const { aiListRes } = this.state;
-
+    //apiPagination是分页组件，会在return中渲染出来
+    //三元表达式
     let apiPagination = aiListRes?
         <Pagination 
           showQuickJumper 
