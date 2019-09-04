@@ -30,7 +30,7 @@ class Index extends React.Component {
         {
           title: "请求状态",
           dataIndex: "status",
-          key: "age",
+          key: "status",
           //render: text => text?<span style={{color:"#ed4014"}}>请求中</span>:<span style={{color:"#19be6b"}}>空闲</span>
           render: text => <span>{this.handleApiStatus(text)}</span>
         },
