@@ -105,7 +105,7 @@ class Index extends React.Component {
           onChange={this.changPage}
         />:"";
     return (
-      <div id="UserManage">
+      <div id="HouseManage">
         <header className="myheader">
           <Row>
             <Col span={24}>
@@ -136,4 +136,4 @@ class Index extends React.Component {
   }
 }
 
-export default Form.create({ name: 'addAppid' })(Index);
+export default Form.create({ name: 'addHouse' })(Index);

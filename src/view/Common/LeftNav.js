@@ -60,7 +60,7 @@ export default class Root extends React.Component {
                 </Link>
               </Menu.Item>
               <Menu.Item key="6">
-                <Link to="Personal">
+                <Link to="announcementManage">
                   <Icon type="appstore-o" />
                   <span className="nav-text">群发管理</span>
                 </Link>
