@@ -18,7 +18,7 @@ class Index extends React.Component {
             <Col span={24}>
               <div className="bg-white">
                 <div className="title">
-                    房源管理
+                    群发管理
                 </div>
               </div>
             </Col>
