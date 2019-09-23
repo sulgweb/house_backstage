@@ -66,7 +66,7 @@ export default class Root extends React.Component {
                 </Link>
               </Menu.Item>
               <Menu.Item key="7">
-                <Link to="Log" />
+                <Link to="PermissionManage" />
                 <Icon type="team" />
                 <span className="nav-text">权限管理</span>
               </Menu.Item>
@@ -80,12 +80,12 @@ export default class Root extends React.Component {
                 <Icon type="team" />
                 <span className="nav-text">个人中心</span>
               </Menu.Item>
-              <Menu.Item key="9">
+              {/* <Menu.Item key="9">
                 <Link to="PermissionManage">
                   <Icon type="cloud-o" />
                   <span className="nav-text">公告管理</span>
                 </Link>
-              </Menu.Item>
+              </Menu.Item> */}
               <Menu.Item key="10">
                 <Link to="Log" />
                 <Icon type="team" />
