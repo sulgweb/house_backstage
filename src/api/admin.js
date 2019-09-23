@@ -1,5 +1,6 @@
 import axios from 'axios'
-let baseUrl = "http://localhost:7001"
+let baseUrl = "http://egg.weblyff.cn:7001"
+//let baseUrl = "http://localhost:7001"
 
 class Admin {
     async adminLogin(data){
