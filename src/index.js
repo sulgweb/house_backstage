@@ -10,16 +10,20 @@ import { Layout } from "antd";
 
 export default class Root extends React.Component {
   render() {
-  //   let renderHtml = <BrowserRouter>
-  //   <LeftNav></LeftNav>
-  //   <Layout style={{ marginLeft: '200px' }}>
-  //     <header style={{background: "#fff",height:"50px"}}>title</header>
-  //     <main style={{padding:"40px 30px"}}>
-  //       <Router />
-  //     </main>
-  //   </Layout>
-  // </BrowserRouter>
-    let renderHtml = <Login></Login>
+    let renderHtml=""
+    if(sessionStorage.getItem("currentUser")){
+      renderHtml = <BrowserRouter>
+    <LeftNav></LeftNav>
+    <Layout style={{ marginLeft: '200px' }}>
+      <header style={{background: "#fff",height:"50px"}}>title</header>
+      <main style={{padding:"40px 30px"}}>
+        <Router />
+      </main>
+    </Layout>
+  </BrowserRouter>
+    }else{
+      renderHtml = <Login></Login>
+    }
     return (
       <div>{renderHtml}</div>
     );

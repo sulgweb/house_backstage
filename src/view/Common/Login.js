@@ -1,15 +1,19 @@
 import React from "react";
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import {admin} from "../../api/admin"
 
 class Login extends React.Component{
     constructor(){
         super();
     }
-    handleSubmit = e => {
+    handleLogin = e => {
+        console.log(e)
         e.preventDefault();
-        this.props.form.validateFields((err, values) => {
+        this.props.form.validateFields(async (err, values) => {
           if (!err) {
-            console.log('Received values of form: ', values);
+            let res = await admin.adminLogin(values)
+            sessionStorage.setItem("currentUser",res.data[0])
+            window.location.reload()
           }
         });
       };
@@ -19,7 +23,7 @@ class Login extends React.Component{
             <div align="center">
                 <div style={{width:"400px"}}>
                     <h1>找房子项目后台管理系统</h1>
-                    <Form onSubmit={this.handleSubmit} className="login-form">
+                    <Form onSubmit={this.handleLogin} className="login-form">
                         <Form.Item>
                         {getFieldDecorator('username', {
                             rules: [{ required: true, message: 'Please input your username!' }],
@@ -42,7 +46,7 @@ class Login extends React.Component{
                         )}
                         </Form.Item>
                         <div>
-                        <Button type="primary" htmlType="submit" className="login-form-button">
+                        <Button type="primary" onClick={this.handleLogin.bind(this)} style={{width:"100%"}} className="login-form-button">
                             登录
                         </Button>
                         </div>

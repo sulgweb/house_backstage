@@ -3,7 +3,7 @@ let baseUrl = "http://localhost:7001"
 
 class Admin {
     async adminLogin(data){
-        let res = await axios.post(`${baseUrl}/admin/adminLogin`,data).then(r=>{
+        let res = await axios.post(`${baseUrl}/admin/login`,data).then(r=>{
             return r
         })
         return res.data
