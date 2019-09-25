@@ -22,3 +22,21 @@
 #index {
     height:100vh
 }
+
+
+/********************* 登录 *********************/
+#login {
+    .box{
+        border: #999 solid 1px;
+        box-shadow: 0 0 7px #999;
+        padding: 50px 80px;
+        border-radius: 20px;
+    }
+    .box-center{
+        position: absolute;
+        width: 500px;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%,-50%)
+    }
+}

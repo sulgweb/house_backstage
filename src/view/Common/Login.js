@@ -20,8 +20,8 @@ class Login extends React.Component{
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
-            <div align="center">
-                <div style={{width:"400px"}}>
+            <div id="login" align="center" >
+                <div className="box-center box">
                     <h1>找房子项目后台管理系统</h1>
                     <Form onSubmit={this.handleLogin} className="login-form">
                         <Form.Item>
