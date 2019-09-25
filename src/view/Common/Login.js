@@ -1,10 +1,11 @@
 import React from "react";
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button } from 'antd';
 import {admin} from "../../api/admin"
 
 class Login extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
+        this.state = {}
     }
     handleLogin = e => {
         console.log(e)
