@@ -6,16 +6,23 @@ import Router from "./router/index";
 import LeftNav from "./view/Common/LeftNav"
 import Login from "./view/Common/Login"
 import "./common/css/index.scss";
-import { Layout } from "antd";
+import { Layout, Button } from "antd";
 
 export default class Root extends React.Component {
+  logout(){
+    sessionStorage.removeItem("currentUser");
+    window.location.reload()
+  }
   render() {
     let renderHtml=""
+    let currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
     if(sessionStorage.getItem("currentUser")){
       renderHtml = <BrowserRouter>
     <LeftNav></LeftNav>
     <Layout style={{ marginLeft: '200px' }}>
-      <header style={{background: "#fff",height:"50px"}}>title</header>
+      <header style={{background: "#fff",height:"50px",textAlign:"right",paddingRight:"30px",paddingTop:"10px"}}>
+        <Button onClick={this.logout.bind(this)}>{currentUser.nickname}/登出</Button>
+      </header>
       <main style={{padding:"40px 30px"}}>
         <Router />
       </main>

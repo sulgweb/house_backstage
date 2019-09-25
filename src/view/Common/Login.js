@@ -12,7 +12,7 @@ class Login extends React.Component{
         this.props.form.validateFields(async (err, values) => {
           if (!err) {
             let res = await admin.adminLogin(values)
-            sessionStorage.setItem("currentUser",res.data[0])
+            sessionStorage.setItem("currentUser",JSON.stringify(res.data[0]))
             window.location.reload()
           }
         });
